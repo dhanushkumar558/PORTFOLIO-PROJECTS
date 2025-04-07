@@ -6,7 +6,6 @@ import Filters from './Components/Filters';
 function App() {
   const [movies, setMovies] = useState([]);
 
-  // Function to fetch movies based on filters
   const fetchMovies = async (filters = {}) => {
     try {
       const res = await axios.post('http://localhost:5000/api/movies', filters);
@@ -16,7 +15,6 @@ function App() {
     }
   };
 
-  // Fetch all movies on initial render
   useEffect(() => {
     fetchMovies();
   }, []);
@@ -25,23 +23,27 @@ function App() {
     <>
       <Navbar />
 
-      <div className="container mt-4">
+      <div className="container-fluid mt-4">
         <div className="row">
-          {/* Filter Section - 100% on mobile, 25% on large */}
+          {/* Filter Section - Sticky on large screens */}
           <div className="col-12 col-lg-3 mb-4">
-            <Filters onSearch={fetchMovies} />
+            <div className="position-sticky sticky-top" style={{ top: '80px' }}>
+              <Filters onSearch={fetchMovies} />
+            </div>
           </div>
 
-          {/* Movies Section - 100% on mobile, 75% on large */}
-          <div className="col-12 col-lg-9">
-            <div className="row g-3">
+          {/* Movies Section */}
+          <div className="col-12 col-lg-9" style={{ maxHeight: 'calc(100vh - 100px)', overflowY: 'auto' }}>
+            <div className="row g-3 pe-3">
               {movies.length > 0 ? (
                 movies.map((movie) => (
                   <div key={movie.id} className="col-12 col-md-6 col-lg-4">
                     <div className="card h-100">
-                  
-
-
+                      <img
+                        src={movie.poster_url || 'https://images.bauerhosting.com/empire/2022/01/Greatest-Movies.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=1440&q=80'}
+                        className="card-img-top"
+                        alt={movie.title}
+                      />
                       <div className="card-body">
                         <h5 className="card-title">{movie.title}</h5>
                         <p className="card-text">
