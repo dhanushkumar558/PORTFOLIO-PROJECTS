@@ -12,9 +12,9 @@ function Filters({ onSearch }) {
   };
 
   return (
-    <div className="bg-light p-3 rounded shadow-sm">
-      <h5 className="mb-3">🎯 Filter Movies</h5>
-      <div className="row g-3">
+    <div className="bg-light rounded shadow-sm">
+      <h5 className="mb-2.5">🎯 Filter Movies</h5>
+      <div className="row g-1">
         <div className="col-12 col-md-6 col-lg-12">
           <label>Industry</label>
           <select className="form-select" value={industry} onChange={e => setIndustry(e.target.value)}>
