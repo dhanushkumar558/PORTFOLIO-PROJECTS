@@ -39,11 +39,7 @@ function App() {
                 movies.map((movie) => (
                   <div key={movie.id} className="col-12 col-md-6 col-lg-4">
                     <div className="card h-100">
-                      <img
-                        src={movie.poster_url || 'https://images.bauerhosting.com/empire/2022/01/Greatest-Movies.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=1440&q=80'}
-                        className="card-img-top"
-                        alt={movie.title}
-                      />
+                     
                       <div className="card-body">
                         <h5 className="card-title">{movie.title}</h5>
                         <p className="card-text">
